@@ -1,0 +1,99 @@
+<div class="modal-header modal_title header-color-modal">
+  <div class="container header_modal">
+    <div class="row">
+      <div class="col-11">
+        <strong>
+          {{modal_titulo}}
+        </strong>
+      </div>
+      <div class="col-1 div-close-header text-right">
+        <a class="close-header" (click)="activeModal.dismiss()">
+          <span>&times;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isDelete">
+  <form [formGroup]="usuarioForm" (ngSubmit)="salvar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label>Nome</label>
+            <input class="form-control"
+              formControlName="nome"
+              type="text"
+              placeholder="Ex: Maria"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-6 form-group">
+            <label>Sobre Nome</label>
+            <input class="form-control"
+              formControlName="sobreNome"
+              type="text"
+              placeholder="Ex: Dias Filho"
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 form-group">
+            <label>cpf</label>
+            <input class="form-control"
+              formControlName="cpf"
+              type="text"
+              placeholder="000.000.000-00"
+              autocomplete="off"
+              mask="000.000.000-00" />
+          </div>
+          <div class="col-sm-8 form-group">
+            <label>Email</label>
+            <input class="form-control"
+              formControlName="email"
+              type="text"
+              placeholder="maria@email.com"
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!usuarioForm.valid" >
+                Salvar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="isDelete">
+  <form [formGroup]="usuarioForm" (ngSubmit)="deletar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-12 form-group text-center fs-15">
+            <strong class="text-warning">
+              <i class="fa fa-exclamation-triangle mr-15 "></i>
+              Realmente deseja excluir o usuário!
+            </strong>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!usuarioForm.valid" >
+                Excluir
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

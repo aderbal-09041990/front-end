@@ -1,0 +1,10 @@
+<div class="alet-absolut text-center" *ngFor="let alert of alerts" class="{{cssClass(alert)}}">
+  <a (click)="removeAlert(alert)">
+    <div class="row">
+      <div class="col-sm-12">
+          <i class="{{cssIconClass(alert)}}"></i>
+          <span [innerHTML]="alert.message"></span>
+      </div>
+    </div>
+  </a>
+</div>

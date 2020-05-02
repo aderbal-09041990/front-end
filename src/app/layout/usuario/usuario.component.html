@@ -1,0 +1,57 @@
+<div class="page-heading">
+  <div class="row">
+    <div class="col-md-12">
+      <h6 class="page-title">Usuario(s)</h6>
+    </div>
+  </div>
+  <div class="page-content fade-in-up">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="ibox">
+          <div class="ibox-body">
+            <div class="row mb-10">
+              <div class="col-md-4">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                      <i class="fa fa-search"></i>
+                    </span>
+                  </div>
+                  <input type="text" class="form-control"
+                     placeholder="Digite para pesquisar"
+                     aria-label="Username"
+                     aria-describedby="basic-addon1"
+                     [(ngModel)]="search">
+                </div>
+              </div>
+              <div class="col-md-8 text-right" >
+                <button class="btn btn-primary" (click)="cadastrar()">Novo</button>
+              </div>
+            </div>
+            <div *ngFor="let usuario of usuarios  | filter: search" class="card h-50 mb-card-user">
+              <div class="card-body">
+                <img class="img-circle m-r-10 pull-left" src="./assets/img/admin-avatar.png" style="width:28px;" />
+                <h6 class="m-0">{{usuario.nome}} {{usuario.sobreNome}}</h6>
+                <div class="ibox-tools pull-right option">
+                  <a class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-ellipsis-v"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item text-success" (click)="alterar(usuario)">
+                      <i class="ti-pencil-alt mr-15"></i>Editar
+                    </a>
+                    <a class="dropdown-item text-danger" (click)="deletar(usuario)">
+                      <i class="ti-trash mr-15"></i>Exclur
+                    </a>
+                    <a class="dropdown-item text-default" (click)="openModalPermissao(usuario)">
+                      <i class="fa fa-key mr-15"></i>Permissão
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

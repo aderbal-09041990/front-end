@@ -1,0 +1,31 @@
+<div class="modal-header modal_title header-color-modal">
+  <div class="container header_modal">
+    <div class="row">
+      <div class="col-11">
+        <strong>
+          Permissões do usuário - {{usuario.nome}}
+        </strong>
+      </div>
+      <div class="col-1 div-close-header text-right">
+        <a class="close-header" (click)="activeModal.dismiss()">
+          <span>&times;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+  <div class="page-content">
+    <div *ngFor="let item of itens">
+      <ul class="list-group list-group-bordered ">
+        <a class="list-group-item bg-theme border-radius-0">{{item.titulo}}</a>
+        <a class="list-group-item border-radius-0">
+          <label *ngFor="let permissao of item.permissoes"
+            class="ui-checkbox ui-checkbox-success ui-checkbox-inline">
+            <input type="checkbox" (click)="updatePermissao(permissao.id)" [(ngModel)]="permissao.selecionado">
+            <span class="input-span"></span>{{permissao.descricao}}
+          </label>
+        </a>
+    </ul>
+  </div>
+</div>

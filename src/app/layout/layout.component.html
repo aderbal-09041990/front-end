@@ -1,0 +1,9 @@
+<header class="header" app-header [usuario]="usuario"></header>
+
+<nav class="page-sidebar" id="sidebar" app-sidebar [usuario]="usuario"></nav>
+
+<div class="content-wrapper">
+  <app-loading></app-loading>
+  <router-outlet></router-outlet>
+  <footer class="page-footer" app-footer></footer>
+</div>

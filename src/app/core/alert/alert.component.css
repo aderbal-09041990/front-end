@@ -1,0 +1,11 @@
+.alet-absolut{
+  top:12%;
+  position: absolute;
+  width: 97%;
+  margin-left: 1.5%;
+  z-index: 1000000;
+}
+.alert-icon{
+  font-size: 17px;
+  margin-right: 10px;
+}

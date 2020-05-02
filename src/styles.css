@@ -1,0 +1,56 @@
+.modal_title{
+  height: 50px;
+}
+.close-header{
+  font-size: 30px;
+}
+.div-close-header{
+  margin-top: -11px;
+  padding-right: 0px;
+}
+.t-20{
+  top: 20px;
+}
+.t-25{
+  top: 25px !important;
+}
+.modal-overflow-y-none {
+  overflow-y: none !important;
+}
+
+.mr-15{
+  margin-left: 15px !important;
+}
+
+.fs-20{
+  font-size: 20px !important;
+}
+
+.theme-config {
+  top: 8px !important;
+  top: 10px !important;
+  z-index: 1010 !important;
+}
+.dropdown-user{
+  margin-right: 40px !important;
+}
+
+.opacity{
+  opacity: 10 !important;
+}
+
+.theme-config-fixed{
+  position: fixed !important;
+}
+
+.white{
+  color: white !important;
+}
+
+.gray{
+  color:#cccccccc !important;
+}
+
+.mb-10{
+  margin-bottom: 10px !important;
+}

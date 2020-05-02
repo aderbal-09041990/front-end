@@ -1,0 +1,167 @@
+<app-alert></app-alert>
+<router-outlet></router-outlet>
+
+<div class="theme-config">
+
+  <div class="theme-config-toggle">
+    <i class="fa fa-cog theme-config-show" (click)="getLayout()"></i>
+    <i class="ti-close theme-config-close" (click)="salvarLayout()"></i>
+  </div>
+
+  <div class="theme-config-box">
+
+      <div class="text-center font-18 m-b-20">Configurações</div>
+
+      <div class="font-strong">Opções do Layout</div>
+
+      <div class="check-list m-b-20 m-t-10">
+          <label class="ui-checkbox ui-checkbox-gray">
+              <input id="_fixedNavbar" type="checkbox"
+                [(ngModel)]="layout.barraNavegacaoFixa">
+              <span class="input-span"></span>
+              Barra de navegação fixa.
+          </label>
+
+          <label class="ui-checkbox ui-checkbox-gray">
+              <input id="_fixedlayout" type="checkbox"
+                [(ngModel)]="layout.layoutFixo">
+              <span class="input-span"></span>
+              Layout fixo.
+          </label>
+
+          <label class="ui-checkbox ui-checkbox-gray">
+              <input class="js-sidebar-toggler" type="checkbox" [(ngModel)]="layout.recolherBarraLateral">
+              <span class="input-span"></span>Recolher barra lateral
+          </label>
+
+      </div>
+
+      <div class="m-t-10 m-b-10 font-strong">Cores</div>
+
+      <div class="d-flex m-b-20">
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Padrão">
+              <label>
+                  <input type="radio" name="setting-theme" value="standard" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-standard" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-white"></div>
+                  <div class="color-small bg-ebony"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Azul">
+              <label>
+                  <input type="radio" name="setting-theme" value="blue" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-blue" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-blue"></div>
+                  <div class="color-small bg-ebony"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Verde">
+              <label>
+                  <input type="radio" name="setting-theme" value="green" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-green" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-green"></div>
+                  <div class="color-small bg-ebony"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Roxo">
+              <label>
+                  <input type="radio" name="setting-theme" value="purple" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-purple" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-purple"></div>
+                  <div class="color-small bg-ebony"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Laranja">
+              <label>
+                  <input type="radio" name="setting-theme" value="orange" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-orange" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-orange"></div>
+                  <div class="color-small bg-ebony"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Rosa">
+              <label>
+                  <input type="radio" name="setting-theme" value="pink" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-pink" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-pink"></div>
+                  <div class="color-small bg-ebony"></div>
+              </label>
+          </div>
+      </div>
+      <div class="d-flex">
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="light">
+              <label>
+                  <input type="radio" name="setting-theme" value="white" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-white" class="fa fa-check"></i>
+                  </span>
+                  <div class="color"></div>
+                  <div class="color-small bg-silver-100"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Azul light">
+              <label>
+                  <input type="radio" name="setting-theme" value="blue_light" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-blue_light" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-blue"></div>
+                  <div class="color-small bg-silver-100"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Verde light">
+              <label>
+                  <input type="radio" name="setting-theme" value="green_light" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-green_light" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-green"></div>
+                  <div class="color-small bg-silver-100"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Roxa light">
+              <label>
+                  <input type="radio" name="setting-theme" value="purple_light" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-purple_light" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-purple"></div>
+                  <div class="color-small bg-silver-100"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Laranja light">
+              <label>
+                  <input type="radio" name="setting-theme" value="orange_light" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-orange_light" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-orange"></div>
+                  <div class="color-small bg-silver-100"></div>
+              </label>
+          </div>
+          <div class="color-skin-box" data-toggle="tooltip" data-original-title="Rosa light">
+              <label>
+                  <input type="radio" name="setting-theme" value="pink_light" [(ngModel)]="layout.corTema">
+                  <span class="color-check-icon">
+                    <i id="icon-check-pink_light" class="fa fa-check"></i>
+                  </span>
+                  <div class="color bg-pink"></div>
+                  <div class="color-small bg-silver-100"></div>
+              </label>
+          </div>
+      </div>
+  </div>
+</div>
+

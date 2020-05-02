@@ -1,0 +1,61 @@
+<div id="sidebar-collapse">
+  <div class="admin-block d-flex">
+    <div>
+      <img src="./assets/img/admin-avatar.png" width="45px" />
+    </div>
+    <div class="admin-info">
+      <div class="font-strong">{{usuario.nome}}</div>
+      <small>{{usuario.sobreNome}}</small>
+    </div>
+  </div>
+  <ul class="side-menu metismenu">
+    <li>
+      <a routerLinkActive="active" routerLink="/app/usuario">
+        <i class="sidebar-item-icon ti-user"></i>
+        <span class="nav-label">Usuário</span>
+      </a>
+    </li>
+    <li class="heading">FEATURES</li>
+
+    <li>
+      <a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
+        aria-controls="multiCollapseExample1" (click)="animationArrow('1')">
+
+        <i class="sidebar-item-icon fa fa-bookmark"></i>
+        <span class="nav-label">Basic UI</span>
+        <i class="icon1 fa fa-angle-left arrow"></i>
+      </a>
+      <div class="nav-2-level collapse" id="multiCollapseExample1">
+        <ul>
+          <li>
+            <a routerLink="/login">Colors</a>
+          </li>
+          <li>
+            <a routerLink="/login">Typography</a>
+          </li>
+          <li>
+            <a routerLink="/login">Panels</a>
+          </li>
+          <li>
+            <a routerLink="/login">Buttons</a>
+          </li>
+          <li>
+            <a routerLink="/login">Tabs</a>
+          </li>
+          <li>
+            <a routerLink="/login">Alerts &amp; Tooltips</a>
+          </li>
+          <li>
+            <a routerLink="/login">Badges &amp; Progress</a>
+          </li>
+          <li>
+            <a routerLink="/login">List</a>
+          </li>
+          <li>
+            <a routerLink="/login">Card</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
