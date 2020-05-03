@@ -10,25 +10,36 @@
   </div>
   <ul class="side-menu metismenu">
     <li>
-      <a routerLinkActive="active" routerLink="/app/usuario">
-        <i class="sidebar-item-icon ti-user"></i>
-        <span class="nav-label">Usuário</span>
-      </a>
-    </li>
-    <li class="heading">FEATURES</li>
+      <a data-toggle="collapse" href="#colapsed1" role="button" aria-expanded="false"
+        aria-controls="colapsed1" (click)="animationArrow('1')">
 
+        <i class="sidebar-item-icon fa fa-user"></i>
+        <span class="nav-label">Entidades</span>
+        <i class="icon1 fa fa-angle-left arrow"></i>
+      </a>
+      <div class="nav-2-level collapse" id="colapsed1">
+        <ul>
+          <li>
+            <a routerLink="/app/usuario">Usuário</a>
+          </li>
+        </ul>
+      </div>
+    </li>
     <li>
-      <a data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false"
-        aria-controls="multiCollapseExample1" (click)="animationArrow('1')">
+      <a data-toggle="collapse" href="#colapsed2" role="button" aria-expanded="false"
+        aria-controls="colapsed2" (click)="animationArrow('2')">
 
         <i class="sidebar-item-icon fa fa-cog"></i>
         <span class="nav-label">Configuração</span>
-        <i class="icon1 fa fa-angle-left arrow"></i>
+        <i class="icon2 fa fa-angle-left arrow"></i>
       </a>
-      <div class="nav-2-level collapse" id="multiCollapseExample1">
+      <div class="nav-2-level collapse" id="colapsed2">
         <ul>
           <li>
             <a routerLink="/app/estado">Estado</a>
+          </li>
+          <li>
+            <a routerLink="/app/cidade">Cidade</a>
           </li>
         </ul>
       </div>

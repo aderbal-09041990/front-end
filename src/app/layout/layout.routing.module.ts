@@ -18,6 +18,11 @@ const routes: Routes = [
         path:'estado',
         loadChildren: () => import('./estado/estado.module').then(m => m.EstadoModule),
         canActivate:[RouteGuard]
+      },
+      {
+        path:'cidade',
+        loadChildren: () => import('./cidade/cidade.module').then(m => m.CidadeModule),
+        canActivate:[RouteGuard]
       }
     ]
   }
