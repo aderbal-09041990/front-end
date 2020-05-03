@@ -1,12 +1,13 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { RequestService } from 'src/app/service/request/request.service';
 import { TokenService } from '../service/token/token.service';
 import { AlertService } from '../core/alert/alert.service';
+import { LoginResponse } from '../model/login-response';
 import { Login } from 'src/app/model/login';
-import { timeout } from 'rxjs/operators';
+import { LocalStorageService } from '../service/local-storage/local-storage.service';
 
 declare var $:any;
 
@@ -17,12 +18,14 @@ declare var $:any;
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  @Input() loginResponse:LoginResponse;
   loginForm: FormGroup;
   login:Login;
   options?: any;
 
   constructor(private formBiulder: FormBuilder,
               private requestService:RequestService,
+              private localStorageService:LocalStorageService,
               private tokenService: TokenService,
               private alertService:AlertService,
               private router:Router) { }
@@ -48,9 +51,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.tokenService.clear();
 
-    this.requestService.post("/login",this.getJson())
+    this.requestService.post("/auth/login",this.getJson())
     .subscribe(
       response => {
+
+        this.loginResponse = response as LoginResponse;
+        this.tokenService.set(this.loginResponse.token);
+        this.localStorageService.setIdUsuario(this.loginResponse.usuario.id.toString());
+
         this.router.navigate(['/app']);
     },
       error =>{

@@ -14,7 +14,7 @@ export class TokenService{
   }
 
   set(tokenValue:string){
-    localStorage.setItem(token,tokenValue.replace("Bearer ",""))
+    localStorage.setItem(token,tokenValue)
   }
 
   clear(){

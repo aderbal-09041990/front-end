@@ -12,7 +12,6 @@ export class LoadingInterceptor implements HttpInterceptor{
 
   intercept(req:HttpRequest<any>, next:HttpHandler):Observable<HttpEvent<any>> {
 
-    console.log('loading')
     return next.handle(req)
                 .pipe(tap(event =>{
                     if(event instanceof HttpResponse){

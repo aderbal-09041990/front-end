@@ -12,7 +12,7 @@ import { Usuario } from '../model/usuario';
 })
 export class LayoutComponent implements AfterViewInit,OnInit {
 
-  usuario:Usuario = new Usuario(null,null,null,null,null);
+  usuario:Usuario = new Usuario(null,null,null,null);
 
   constructor(private requestService:RequestService,
     private localStorageService:LocalStorageService) { }
@@ -24,17 +24,22 @@ export class LayoutComponent implements AfterViewInit,OnInit {
   ngAfterViewInit() { Helpers.initLayout(); }
 
   private getUsuario(){
-    this.requestService.post("/usuario/by/email",this.localStorageService.usuario())
+
+    this.requestService.getParams("/usuario/find/by",
+                                  this.localStorageService.getIdUsuario())
     .subscribe(
       response => {
+
         this.usuario = response as Usuario;
         this.localStorageService.setNomeUsuario(this.usuario.nome);
-        this.localStorageService.setIdUsuario(this.usuario.id.toString());
+
         if(this.usuario.layout != null){
           this.localStorageService.setIdLayuot(this.usuario.layout.id.toString());
           Helpers.montaTema(this.usuario.layout);
         }
+
     });
+
   }
 
 }

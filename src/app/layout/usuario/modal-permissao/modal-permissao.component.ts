@@ -23,7 +23,7 @@ export class ModalPermissaoComponent implements OnInit{
   }
 
   find(){
-    this.requestService.getParams("/permissao/find/all/permissaoDTO",this.usuario.id.toString())
+    this.requestService.getParams("/permissao/lista",this.usuario.id.toString())
       .subscribe(response => {
         this.itens = response as PermissaoDTO[];
       },

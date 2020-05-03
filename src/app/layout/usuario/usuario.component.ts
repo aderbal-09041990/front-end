@@ -52,7 +52,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   cadastrar(){
-    this.open('Cadastrar Usuário',new Usuario(null,null,null,null,null),false);
+    this.open('Cadastrar Usuário',new Usuario(null,null,null,null),false);
   }
 
   deletar(usuario:Usuario){

@@ -17,7 +17,7 @@ export class TokenInterceptor implements HttpInterceptor{
     if (token) {
 
       const cloned = req.clone({
-        headers: req.headers.set("Authorization",token)
+        headers: req.headers.set("Authorization","Bearer " +token)
       });
 
       return next.handle(cloned);
@@ -29,9 +29,7 @@ export class TokenInterceptor implements HttpInterceptor{
 
         if(event instanceof HttpResponse){
 
-          if(event.status == 200){
-            this.tokenService.set(event.headers.get("Authorization"))
-          }else{
+          if(event.status != 200){
             this.tokenService.clear();
           }
 

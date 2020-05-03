@@ -34,7 +34,6 @@ export class ModalUsuarioComponent implements OnInit {
     this.usuarioForm = this.formBiulder.group({
       id: ['', []],
       nome: ['', [Validators.required]],
-      sobreNome: ['', []],
       email: ['', [Validators.required, Validators.email]],
       cpf: ['', [Validators.required]]
     });
@@ -43,7 +42,6 @@ export class ModalUsuarioComponent implements OnInit {
   setFormValue(usuario: Usuario) {
     this.usuarioForm.get('id').setValue(usuario.id);
     this.usuarioForm.get('nome').setValue(usuario.nome);
-    this.usuarioForm.get('sobreNome').setValue(usuario.sobreNome);
     this.usuarioForm.get('email').setValue(usuario.email);
     this.usuarioForm.get('cpf').setValue(usuario.cpf);
   }
@@ -54,7 +52,6 @@ export class ModalUsuarioComponent implements OnInit {
       new Usuario(
         values.id,
         values.nome,
-        values.sobreNome,
         values.email,
         values.cpf));
   }
