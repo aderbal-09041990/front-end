@@ -1,0 +1,123 @@
+<div class="modal-header modal_title header-color-modal">
+  <div class="container header_modal">
+    <div class="row">
+      <div class="col-11">
+        <strong>
+          {{modal_titulo}}
+        </strong>
+      </div>
+      <div class="col-1 div-close-header text-right">
+        <a class="close-header" (click)="activeModal.dismiss()">
+          <span>&times;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isDelete">
+  <form [formGroup]="fornecedorForm" (ngSubmit)="salvar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-6 form-group">
+            <label>Nome</label>
+            <input class="form-control"
+              formControlName="nome"
+              type="text"
+              placeholder="Ex: Mini Box"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-6 form-group">
+            <label>Fantasia</label>
+            <input class="form-control"
+              formControlName="fantasia"
+              type="text"
+              placeholder="Ex: Mini Box Lider"
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3 form-group">
+            <Label>Tipo de documento</Label>
+            <div class="m-b-10">
+              <label class="ui-radio ui-radio-inline ui-radio-primary">
+                <input type="radio" formControlName="tipoDocumento" [value]="'CPF'">
+                <span class="input-span"></span>
+                CPF
+              </label>
+              <label class="ui-radio ui-radio-inline ui-radio-primary">
+                <input type="radio" formControlName="tipoDocumento" [value]="'CNPJ'">
+                <span class="input-span"></span>
+                CNPJ
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-4 form-group"
+            *ngIf="fornecedorForm.get('tipoDocumento').value === 'CPF'">
+            <label>CPF</label>
+            <input class="form-control"
+              formControlName="numeroDocumento"
+              type="text"
+              mask="000.000.000-00"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-4 form-group"
+            *ngIf="fornecedorForm.get('tipoDocumento').value === 'CNPJ'">
+            <label>CNPJ</label>
+            <input class="form-control"
+              formControlName="numeroDocumento"
+              type="text"
+              mask="00.000.000/0000-00"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-5 form-group">
+            <label>Inscrição Estadual</label>
+            <input class="form-control"
+              formControlName="ie"
+              type="text"
+              placeholder="Ex: 99999999"
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!fornecedorForm.valid" >
+                Salvar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="isDelete">
+  <form [formGroup]="fornecedorForm" (ngSubmit)="deletar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-12 form-group text-center fs-15">
+            <strong class="text-warning">
+              <i class="fa fa-exclamation-triangle mr-15 "></i>
+              Realmente deseja excluir o fornecedor!
+            </strong>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!fornecedorForm.valid" >
+                Excluir
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

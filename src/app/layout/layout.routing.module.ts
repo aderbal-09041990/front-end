@@ -23,6 +23,11 @@ const routes: Routes = [
         path:'cidade',
         loadChildren: () => import('./cidade/cidade.module').then(m => m.CidadeModule),
         canActivate:[RouteGuard]
+      },
+      {
+        path:'fornecedor',
+        loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule),
+        canActivate:[RouteGuard]
       }
     ]
   }
