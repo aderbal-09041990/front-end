@@ -13,6 +13,11 @@ const routes: Routes = [
         path:'usuario',
         loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule),
         canActivate:[RouteGuard]
+      },
+      {
+        path:'estado',
+        loadChildren: () => import('./estado/estado.module').then(m => m.EstadoModule),
+        canActivate:[RouteGuard]
       }
     ]
   }

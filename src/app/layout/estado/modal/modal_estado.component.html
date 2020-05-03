@@ -1,0 +1,88 @@
+<div class="modal-header modal_title header-color-modal">
+  <div class="container header_modal">
+    <div class="row">
+      <div class="col-11">
+        <strong>
+          {{modal_titulo}}
+        </strong>
+      </div>
+      <div class="col-1 div-close-header text-right">
+        <a class="close-header" (click)="activeModal.dismiss()">
+          <span>&times;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isDelete">
+  <form [formGroup]="estadoForm" (ngSubmit)="salvar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-2 form-group">
+            <label>Código</label>
+            <input class="form-control"
+              formControlName="codigo"
+              type="text"
+              placeholder="Ex: 50"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-8 form-group">
+            <label>Nome</label>
+            <input class="form-control"
+              formControlName="nome"
+              type="text"
+              placeholder="Ex: Goiás"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-2 form-group">
+            <label>Sigla</label>
+            <input class="form-control"
+              formControlName="sigla"
+              type="text"
+              placeholder="Ex: GO"
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!estadoForm.valid" >
+                Salvar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="isDelete">
+  <form [formGroup]="estadoForm" (ngSubmit)="deletar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-12 form-group text-center fs-15">
+            <strong class="text-warning">
+              <i class="fa fa-exclamation-triangle mr-15 "></i>
+              Realmente deseja excluir o estado!
+            </strong>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!estadoForm.valid" >
+                Excluir
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

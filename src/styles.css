@@ -54,3 +54,37 @@
 .mb-10{
   margin-bottom: 10px !important;
 }
+
+.h-50{
+  height: 50px !important;
+}
+.card-body {
+  padding: 10px !important;
+}
+.m-0 {
+  margin: 5px !important;
+}
+.option{
+  margin-top: -23px;
+  font-size: 15px;
+  color: #6c757d9c;
+}
+.mr-15{
+  margin-right: 15px;
+}
+.mb-card-user{
+  margin-bottom: -1px;
+}
+.card{
+  border-radius: 0px !important;
+}
+.page-heading .page-title {
+  font-size: 26px !important;
+  margin: 12px 0 10px 0 !important;
+}
+.justify-content-end{
+  padding: 13px !important;
+}
+.page-content {
+  padding-top: 10px !important;
+}
