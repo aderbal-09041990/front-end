@@ -1,0 +1,61 @@
+<div class="page-heading">
+  <div class="row">
+    <div class="col-md-12">
+      <h6 class="page-title">Tipo de Embalagem(s)</h6>
+    </div>
+  </div>
+  <div class="page-content fade-in-up">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="ibox">
+          <div class="ibox-body">
+            <div class="row mb-10">
+              <div class="col-md-4">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                      <i class="fa fa-search"></i>
+                    </span>
+                  </div>
+                  <input type="text" class="form-control"
+                     placeholder="Digite para pesquisar"
+                     aria-label="search"
+                     aria-describedby="basic-addon1"
+                     [(ngModel)]="search">
+                </div>
+              </div>
+              <div class="col-md-8 text-right" >
+                <button class="btn btn-primary" (click)="cadastrar()">Novo</button>
+              </div>
+            </div>
+            <div *ngFor="let tipoEmbalagem of tipoEmbalagens  | filter: search" class="card h-50 mb-card-user">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <span class="badge badge-info m-r-5 m-b-5 pull-left">
+                      {{tipoEmbalagem.id}}
+                    </span>
+
+                    <h6 class="m-0">{{tipoEmbalagem.descricao}}</h6>
+                    <div class="ibox-tools pull-right option">
+                      <a class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-ellipsis-v"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item text-success" (click)="alterar(tipoEmbalagem)">
+                          <i class="ti-pencil-alt mr-15"></i>Editar
+                        </a>
+                        <a class="dropdown-item text-danger" (click)="deletar(tipoEmbalagem)">
+                          <i class="ti-trash mr-15"></i>Exclur
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

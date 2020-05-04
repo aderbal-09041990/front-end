@@ -1,0 +1,150 @@
+<div class="modal-header modal_title header-color-modal">
+  <div class="container header_modal">
+    <div class="row">
+      <div class="col-11">
+        <strong>
+          {{modal_titulo}}
+        </strong>
+      </div>
+      <div class="col-1 div-close-header text-right">
+        <a class="close-header" (click)="activeModal.dismiss()">
+          <span>&times;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isDelete">
+  <form [formGroup]="produtoForm" (ngSubmit)="salvar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-2 form-group">
+            <label>Código</label>
+            <input class="form-control"
+              formControlName="codigo"
+              type="text"
+              placeholder="Ex: 99"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-6 form-group">
+            <label>Nome</label>
+            <input class="form-control"
+              formControlName="nome"
+              type="text"
+              placeholder="Ex: Arroz"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-4 form-group">
+            <label>Código Fabrica</label>
+            <input class="form-control"
+              formControlName="codigoFabrica"
+              type="text"
+              placeholder="Ex: 999999999"
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 form-group">
+            <label>Volume</label>
+            <input class="form-control"
+              formControlName="volumes"
+              placeholder="Ex: 99"
+              type="text"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-4 form-group">
+            <label>Shelf life</label>
+            <input class="form-control"
+              formControlName="shelfLife"
+              type="text"
+              placeholder="Ex: 99"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-4 form-group">
+            <label>Percentual shelf life</label>
+            <input class="form-control"
+              formControlName="percentualShelfLife"
+              type="text"
+              placeholder="Ex: 99"
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 m-b-20">
+            <div class="check-list">
+                <label class="ui-checkbox ui-checkbox-primary">
+                    <input type="checkbox" formControlName="existeCodigoBarra">
+                    <span class="input-span"></span>Existe Código de Barra</label>
+                <label class="ui-checkbox ui-checkbox-primary">
+                    <input type="checkbox" formControlName="controleLote">
+                    <span class="input-span"></span>Controle de Lote</label>
+                <label class="ui-checkbox ui-checkbox-primary">
+                    <input type="checkbox" formControlName="controleVencto">
+                    <span class="input-span"></span>Controle de Vencimento</label>
+                <label class="ui-checkbox ui-checkbox-primary">
+                    <input type="checkbox" formControlName="controleTemperatura">
+                    <span class="input-span"></span>COntrole de temperatura</label>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="produtoForm.get('controleTemperatura').value === true">
+          <div class="col-sm-3 form-group">
+            <label>Temperatura Mínima</label>
+            <input class="form-control"
+              formControlName="temperaturaMinima"
+              type="text"
+              placeholder="Ex: 99"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-3 form-group">
+            <label>Temperatura Máxima</label>
+            <input class="form-control"
+              formControlName="temperaturaMaxima"
+              placeholder="Ex: 99"
+              type="text"
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!produtoForm.valid" >
+                Salvar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="isDelete">
+  <form [formGroup]="produtoForm" (ngSubmit)="deletar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-12 form-group text-center fs-15">
+            <strong class="text-warning">
+              <i class="fa fa-exclamation-triangle mr-15 "></i>
+              Realmente deseja excluir o Produto!
+            </strong>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!produtoForm.valid" >
+                Excluir
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

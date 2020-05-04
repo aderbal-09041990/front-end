@@ -28,6 +28,17 @@ const routes: Routes = [
         path:'fornecedor',
         loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule),
         canActivate:[RouteGuard]
+      },
+      {
+        path:'produto',
+        loadChildren: () => import('./produto/produto.module').then(m => m.ProdutoModule),
+        canActivate:[RouteGuard]
+      }
+      ,
+      {
+        path:'tipo/embalagem',
+        loadChildren: () => import('./tipo_embalagem/tipo_embalagem.module').then(m => m.TipoEmbalagemModule),
+        canActivate:[RouteGuard]
       }
     ]
   }
