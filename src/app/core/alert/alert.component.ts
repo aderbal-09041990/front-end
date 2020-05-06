@@ -6,7 +6,7 @@ import { AlertService } from './alert.service';
 import { Alert, AlertType } from './alert';
 
 @Component({
-  selector: 'app-alert',
+  selector: '[app-alert]',
   templateUrl: 'alert.component.html',
   styleUrls:['alert.component.css']
  })
@@ -37,7 +37,7 @@ export class AlertComponent implements OnInit, OnDestroy {
         this.alerts.push(alert);
 
         if (alert.autoClose) {
-          setTimeout(() => this.removeAlert(alert), 10000);
+          setTimeout(() => this.removeAlert(alert), 1000000);
         }
       });
 
@@ -95,10 +95,10 @@ export class AlertComponent implements OnInit, OnDestroy {
     if (!alert) return;
 
     const alertTypeClass = {
-      [AlertType.Success]: 'fa fa-check-circle alert-icon',
-      [AlertType.Error]: 'fa fa-bomb alert-icon',
-      [AlertType.Info]: 'fa fa-info-circle alert-icon',
-      [AlertType.Warning]: 'fa fa-engine-warning alert-icon'
+      [AlertType.Success]: 'fa fa-check-circle icon-alert',
+      [AlertType.Error]: 'fa fa-bomb icon-alert',
+      [AlertType.Info]: 'fa fa-info-circle icon-alert',
+      [AlertType.Warning]: 'fa fa-engine-warning icon-alert'
     }
 
     return alertTypeClass[alert.type]

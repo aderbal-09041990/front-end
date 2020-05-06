@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalTipoEmbalagemComponent } from './modal/modal_tipo_embalagem.component';
 import { RequestService } from 'src/app/service/request/request.service';
 import { TipoEmbalagem } from 'src/app/model/tipo_embalagem';
+import { AlertService } from 'src/app/core/alert/alert.service';
 
 @Component({
   selector: 'app-tipo-embalagem',
@@ -16,6 +17,7 @@ export class TipoEmbalagemComponent implements OnInit {
   search:string;
 
   constructor(private requestService: RequestService,
+    private alertService:AlertService,
     private modalService: NgbModal){
 
       this.modalOptions = {
@@ -33,9 +35,9 @@ export class TipoEmbalagemComponent implements OnInit {
     this.requestService.get("/tipo/embalagem/find/all")
     .subscribe(response => {
       this.tipoEmbalagens = response as TipoEmbalagem[];
-    },
-      error =>{console.log(error)}
-    );
+    },responseError => {
+      this.alertService.errors(responseError.error.errors);
+    });
   }
 
   alterar(tipoEmbalagem:TipoEmbalagem){

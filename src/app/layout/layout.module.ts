@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LayoutRoutingModule } from './layout.routing.module';
 import { HeaderComponent } from './header/header.component';
-import { FooterComponet } from 'footer/footer.component';
+import { FooterComponet } from 'src/app/layout/footer/footer.component';
 import { LayoutComponent } from './layout.component';
 import { LoadingModule } from '../core/loading/loading-module';
 

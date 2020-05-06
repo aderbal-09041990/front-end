@@ -11,33 +11,33 @@ const routes: Routes = [
     children:[
       {
         path:'usuario',
-        loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule),
+        loadChildren: () => import('./pages/usuario/usuario.module').then(m => m.UsuarioModule),
         canActivate:[RouteGuard]
       },
       {
         path:'estado',
-        loadChildren: () => import('./estado/estado.module').then(m => m.EstadoModule),
+        loadChildren: () => import('./pages/estado/estado.module').then(m => m.EstadoModule),
         canActivate:[RouteGuard]
       },
       {
         path:'cidade',
-        loadChildren: () => import('./cidade/cidade.module').then(m => m.CidadeModule),
+        loadChildren: () => import('./pages/cidade/cidade.module').then(m => m.CidadeModule),
         canActivate:[RouteGuard]
       },
       {
         path:'fornecedor',
-        loadChildren: () => import('./fornecedor/fornecedor.module').then(m => m.FornecedorModule),
+        loadChildren: () => import('./pages/fornecedor/fornecedor.module').then(m => m.FornecedorModule),
         canActivate:[RouteGuard]
       },
       {
         path:'produto',
-        loadChildren: () => import('./produto/produto.module').then(m => m.ProdutoModule),
+        loadChildren: () => import('./pages/produto/produto.module').then(m => m.ProdutoModule),
         canActivate:[RouteGuard]
       }
       ,
       {
         path:'tipo/embalagem',
-        loadChildren: () => import('./tipo_embalagem/tipo_embalagem.module').then(m => m.TipoEmbalagemModule),
+        loadChildren: () => import('./pages/tipo_embalagem/tipo_embalagem.module').then(m => m.TipoEmbalagemModule),
         canActivate:[RouteGuard]
       }
     ]

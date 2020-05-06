@@ -4,6 +4,7 @@ import { Helpers } from '../helpers';
 import { LocalStorageService } from '../service/local-storage/local-storage.service';
 import { RequestService } from '../service/request/request.service';
 import { Usuario } from '../model/usuario';
+import { AlertService } from '../core/alert/alert.service';
 
 @Component({
   selector: '.page-wrapper',
@@ -15,6 +16,7 @@ export class LayoutComponent implements AfterViewInit,OnInit {
   usuario:Usuario = new Usuario(null,null,null,null);
 
   constructor(private requestService:RequestService,
+    private alertService:AlertService,
     private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
@@ -38,6 +40,8 @@ export class LayoutComponent implements AfterViewInit,OnInit {
           Helpers.montaTema(this.usuario.layout);
         }
 
+    },responseError => {
+      this.alertService.errors(responseError.error.errors);
     });
 
   }

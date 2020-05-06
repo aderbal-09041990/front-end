@@ -33,9 +33,9 @@ export class ModalUsuarioComponent implements OnInit {
   initializeForm() {
     this.usuarioForm = this.formBiulder.group({
       id: ['', []],
-      nome: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      cpf: ['', [Validators.required]]
+      nome: ['', []],
+      email: ['', []],
+      cpf: ['', []]
     });
   }
 
@@ -67,9 +67,9 @@ export class ModalUsuarioComponent implements OnInit {
         this.activeModal.close();
         this.alertService.success('As informações do usuário foram salvas com sucesso.');
       },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
+        responseError => {
+          console.log(responseError)
+          this.alertService.errors(responseError.error.errors);
         }
       );
 
@@ -81,9 +81,8 @@ export class ModalUsuarioComponent implements OnInit {
         this.activeModal.close();
         this.alertService.success('O usuário foi excluído com sucesso.');
       },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
+        responseError => {
+          this.alertService.errors(responseError.error.errors);
         }
       );
   }
@@ -95,11 +94,9 @@ export class ModalUsuarioComponent implements OnInit {
         .subscribe(response => {
           this.setFormValue(response as Usuario);
         },
-          error => {
-            console.log(error)
-            this.alertService.error(error.error.errors);
-          }
-        );
+        responseError => {
+          this.alertService.errors(responseError.error.errors);
+        });
     }
   }
 }

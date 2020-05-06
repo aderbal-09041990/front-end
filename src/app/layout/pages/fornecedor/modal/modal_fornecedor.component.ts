@@ -83,12 +83,9 @@ export class ModalFornecedorComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('As informações do fornecedor foram salvas com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
 
   }
 
@@ -97,12 +94,9 @@ export class ModalFornecedorComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('O fornecedor foi excluído com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
   }
 
   getId() {
@@ -112,12 +106,9 @@ export class ModalFornecedorComponent implements OnInit {
         .subscribe(response => {
           this.fornecedor = response as Fornecedor;
           this.setFormValue(this.fornecedor);
-        },
-          error => {
-            console.log(error)
-            this.alertService.error(error.error.errors);
-          }
-        );
+        },responseError => {
+          this.alertService.errors(responseError.error.errors);
+        });
     }
   }
 }

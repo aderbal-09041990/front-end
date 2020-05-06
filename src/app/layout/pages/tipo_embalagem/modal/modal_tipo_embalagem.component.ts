@@ -60,12 +60,9 @@ export class ModalTipoEmbalagemComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('As informações do tipo_embalagem foram salvas com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
 
   }
 
@@ -74,12 +71,9 @@ export class ModalTipoEmbalagemComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('O tipo_embalagem foi excluído com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
   }
 
   getId() {
@@ -89,12 +83,9 @@ export class ModalTipoEmbalagemComponent implements OnInit {
         .subscribe(response => {
           this.tipoEmbalagem = response as TipoEmbalagem;
           this.setFormValue(this.tipoEmbalagem);
-        },
-          error => {
-            console.log(error)
-            this.alertService.error(error.error.errors);
-          }
-        );
+        },responseError => {
+          this.alertService.errors(responseError.error.errors);
+        });
     }
   }
 }

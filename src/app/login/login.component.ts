@@ -61,11 +61,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
         this.router.navigate(['/app']);
     },
-      error =>{
-        console.log(error)
-        this.alertService.error("Usuário ou Senha são inválido!");
-      }
-    );
+    responseError => {
+      this.alertService.errors(responseError.error.errors);
+    });
   }
 
   getJson(){

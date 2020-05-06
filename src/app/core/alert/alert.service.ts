@@ -27,6 +27,14 @@ export class AlertService {
     this.alert(new Alert({type: AlertType.Error,message,autoClose: true}));
   }
 
+  errors(errors:any[]){
+    console.log(errors)
+    errors.forEach(error => {
+      console.log(error.message)
+      this.alert(new Alert({type: AlertType.Error,message:error.message,autoClose: true}));
+    });
+  }
+
   info(message: string) {
     this.alert(new Alert({type: AlertType.Info, message,autoClose: true}));
   }

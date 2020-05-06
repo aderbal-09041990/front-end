@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalProdutoComponent } from './modal/modal_produto.component';
 import { RequestService } from 'src/app/service/request/request.service';
 import { Produto } from 'src/app/model/produto';
+import { AlertService } from 'src/app/core/alert/alert.service';
 
 @Component({
   selector: 'app-produto',
@@ -16,6 +17,7 @@ export class ProdutoComponent implements OnInit {
   search:string;
 
   constructor(private requestService: RequestService,
+    private alertService:AlertService,
     private modalService: NgbModal){
 
       this.modalOptions = {
@@ -33,9 +35,9 @@ export class ProdutoComponent implements OnInit {
     this.requestService.get("/produto/find/all")
     .subscribe(response => {
       this.produtos = response as Produto[];
-    },
-      error =>{console.log(error)}
-    );
+    },responseError => {
+      this.alertService.errors(responseError.error.errors);
+    });
   }
 
   alterar(produto:Produto){

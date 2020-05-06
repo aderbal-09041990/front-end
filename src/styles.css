@@ -88,3 +88,9 @@
 .page-content {
   padding-top: 10px !important;
 }
+
+.absolut-alert{
+  position: absolute;
+  width: 100%;
+  top: 3%;
+}

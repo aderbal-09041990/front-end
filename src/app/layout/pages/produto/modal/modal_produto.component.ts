@@ -94,12 +94,9 @@ export class ModalProdutoComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('As informações do produto foram salvas com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
 
   }
 
@@ -108,12 +105,9 @@ export class ModalProdutoComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('O produto foi excluído com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
   }
 
   getId() {
@@ -123,12 +117,9 @@ export class ModalProdutoComponent implements OnInit {
         .subscribe(response => {
           this.produto = response as Produto;
           this.setFormValue(this.produto);
-        },
-          error => {
-            console.log(error)
-            this.alertService.error(error.error.errors);
-          }
-        );
+        },responseError => {
+          this.alertService.errors(responseError.error.errors);
+        });
     }
   }
 }

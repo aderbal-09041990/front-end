@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/service/request/request.service';
 import { ModalCidadeComponent } from './modal/modal_cidade.component';
 import { Cidade } from 'src/app/model/cidade';
+import { AlertService } from 'src/app/core/alert/alert.service';
 
 @Component({
   selector: 'app-cidade',
@@ -16,7 +17,7 @@ export class CidadeComponent implements OnInit {
   search:string;
 
   constructor(private requestService: RequestService,
-
+    private alertService:AlertService,
     private modalService: NgbModal){
 
       this.modalOptions = {
@@ -34,9 +35,9 @@ export class CidadeComponent implements OnInit {
     this.requestService.get("/cidade/find/all")
     .subscribe(response => {
       this.cidades = response as Cidade[];
-    },
-      error =>{console.log(error)}
-    );
+    },responseError => {
+      this.alertService.errors(responseError.error.errors);
+    });
   }
 
   alterar(cidade:Cidade){

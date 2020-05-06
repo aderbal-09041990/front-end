@@ -26,12 +26,9 @@ export class ModalPermissaoComponent implements OnInit{
     this.requestService.getParams("/permissao/lista",this.usuario.id.toString())
       .subscribe(response => {
         this.itens = response as PermissaoDTO[];
-      },
-        error => {
-          console.log(error);
-          this.alertService.success(error.message);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
   }
 
   updatePermissao(id:number){
@@ -39,12 +36,9 @@ export class ModalPermissaoComponent implements OnInit{
     id.toString(),
     this.usuario.id.toString())
     .subscribe(response => {
-    },
-      error => {
-        console.log(error);
-        this.alertService.success(error.message);
-      }
-    );
+    },responseError => {
+      this.alertService.errors(responseError.error.errors);
+    });
   }
 
 

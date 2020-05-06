@@ -4,6 +4,7 @@ import { NgbModalOptions, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalFornecedorComponent } from './modal/modal_fornecedor.component';
 import { RequestService } from 'src/app/service/request/request.service';
 import { Fornecedor } from 'src/app/model/fornecedor';
+import { AlertService } from 'src/app/core/alert/alert.service';
 
 @Component({
   selector: 'app-fornecedor',
@@ -16,7 +17,7 @@ export class FornecedorComponent implements OnInit {
   search:string;
 
   constructor(private requestService: RequestService,
-
+    private alertService:AlertService,
     private modalService: NgbModal){
 
       this.modalOptions = {
@@ -34,9 +35,9 @@ export class FornecedorComponent implements OnInit {
     this.requestService.get("/fornecedor/find/all")
     .subscribe(response => {
       this.fornecedores = response as Fornecedor[];
-    },
-      error =>{console.log(error)}
-    );
+    },responseError => {
+      this.alertService.errors(responseError.error.errors);
+    });
   }
 
   alterar(fornecedor:Fornecedor){

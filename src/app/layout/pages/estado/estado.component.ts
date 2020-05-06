@@ -3,6 +3,7 @@ import { NgbModalOptions, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Estado } from 'src/app/model/estado';
 import { RequestService } from 'src/app/service/request/request.service';
 import { ModalEstadoComponent } from './modal/modal_estado.component';
+import { AlertService } from 'src/app/core/alert/alert.service';
 
 @Component({
   selector: 'app-estado',
@@ -15,7 +16,7 @@ export class EstadoComponent implements OnInit {
   search:string;
 
   constructor(private requestService: RequestService,
-
+    private alertService:AlertService,
     private modalService: NgbModal){
 
       this.modalOptions = {
@@ -33,9 +34,9 @@ export class EstadoComponent implements OnInit {
     this.requestService.get("/estado/find/all")
     .subscribe(response => {
       this.estados = response as Estado[];
-    },
-      error =>{console.log(error)}
-    );
+    },responseError => {
+      this.alertService.errors(responseError.error.errors);
+    });
   }
 
   alterar(estado:Estado){

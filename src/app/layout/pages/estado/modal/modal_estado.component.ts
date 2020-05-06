@@ -65,12 +65,9 @@ export class ModalEstadoComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('As informações do estado foram salvas com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
 
   }
 
@@ -79,12 +76,9 @@ export class ModalEstadoComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('O estado foi excluído com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
   }
 
   getId() {
@@ -93,12 +87,9 @@ export class ModalEstadoComponent implements OnInit {
       this.requestService.getParams("/estado/find/by", this.estado.id.toString())
         .subscribe(response => {
           this.setFormValue(response as Estado);
-        },
-          error => {
-            console.log(error)
-            this.alertService.error(error.error.errors);
-          }
-        );
+        },responseError => {
+          this.alertService.errors(responseError.error.errors);
+        });
     }
   }
 }

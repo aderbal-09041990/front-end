@@ -69,13 +69,9 @@ export class ModalCidadeComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('As informações do cidade foram salvas com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
-
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
   }
 
   deletar(){
@@ -83,12 +79,9 @@ export class ModalCidadeComponent implements OnInit {
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('O cidade foi excluído com sucesso.');
-      },
-        error => {
-          console.log(error.error.errors);
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
   }
 
   getId() {
@@ -97,12 +90,9 @@ export class ModalCidadeComponent implements OnInit {
       this.requestService.getParams("/cidade/find/by", this.cidade.id.toString())
         .subscribe(response => {
           this.setFormValue(response as Cidade);
-        },
-          error => {
-            console.log(error)
-            this.alertService.error(error.error.errors);
-          }
-        );
+        },responseError => {
+          this.alertService.errors(responseError.error.errors);
+        });
     }
   }
 
@@ -111,12 +101,9 @@ export class ModalCidadeComponent implements OnInit {
     this.requestService.get("/estado/find/all")
       .subscribe(response => {
         this.estados = response as Estado[];
-      },
-        error => {
-          console.log(error)
-          this.alertService.error(error.error.errors);
-        }
-      );
+      },responseError => {
+        this.alertService.errors(responseError.error.errors);
+      });
   }
 
 }

@@ -1,10 +1,11 @@
 import { NgbModalOptions, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 
+import { ModalPermissaoComponent } from './modal-permissao/modal-permissao.component';
 import { RequestService } from 'src/app/service/request/request.service';
 import { ModalUsuarioComponent } from './modal/modal_usuario.component';
+import { AlertService } from 'src/app/core/alert/alert.service';
 import { Usuario } from 'src/app/model/usuario';
-import { ModalPermissaoComponent } from './modal-permissao/modal-permissao.component';
 
 @Component({
   selector: 'app-usuario',
@@ -18,6 +19,7 @@ export class UsuarioComponent implements OnInit {
   search:string;
 
   constructor(private requestService: RequestService,
+    private alertService:AlertService,
     private modalService: NgbModal){
 
       this.modalOptions = {
@@ -63,9 +65,9 @@ export class UsuarioComponent implements OnInit {
     this.requestService.get("/usuario/find/all")
     .subscribe(response => {
       this.usuarios = response as Usuario[];
-    },
-      error =>{console.log(error)}
-    );
+    },responseError => {
+      this.alertService.errors(responseError.error.errors);
+    });
   }
 
   openModalPermissao(usuario:Usuario) {
