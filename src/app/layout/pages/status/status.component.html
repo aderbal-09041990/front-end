@@ -1,0 +1,70 @@
+<div class="page-heading">
+  <div class="row">
+    <div class="col-md-12">
+      <h6 class="page-title">Status</h6>
+    </div>
+  </div>
+  <div class="page-content fade-in-up">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="ibox">
+          <div class="ibox-body">
+            <div class="row mb-10">
+              <div class="col-md-4">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">
+                      <i class="fa fa-search"></i>
+                    </span>
+                  </div>
+                  <input type="text" class="form-control"
+                     placeholder="Digite para pesquisar"
+                     aria-label="search"
+                     aria-describedby="basic-addon1"
+                     [(ngModel)]="search">
+                </div>
+              </div>
+              <div class="col-md-8 text-right" >
+                <button class="btn btn-primary" (click)="cadastrar()">Novo</button>
+              </div>
+            </div>
+            <div *ngFor="let status of listaStatus  | filter: search" class="card h-50 mb-card-user">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-9">
+                    <h6 class="m-0">{{status.id}} -
+                      {{status.descricao}}</h6>
+                  </div>
+                  <div class="col-md-2">
+                    <label class="pt-0 col-form-label c-switch c-switch-pill c-switch-label c-switch-success">
+                      <input type="checkbox"
+                        class="c-switch-input"
+                        [(ngModel)]="status.ativo"
+                        (click)="alterarAtivo(status)">
+                      <span class="c-switch-slider" ></span>
+                    </label>
+                  </div>
+                  <div class="col-md-1">
+                    <div class="ibox-tools pull-right option">
+                      <a class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-ellipsis-v"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item text-success" (click)="alterar(status)">
+                          <i class="ti-pencil-alt mr-15"></i>Editar
+                        </a>
+                        <a class="dropdown-item text-danger" (click)="deletar(status)">
+                          <i class="ti-trash mr-15"></i>Exclur
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

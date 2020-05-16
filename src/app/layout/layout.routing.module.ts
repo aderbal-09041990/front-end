@@ -44,6 +44,11 @@ const routes: Routes = [
         path:'prioridade',
         loadChildren: () => import('./pages/prioridade/prioridade.module').then(m => m.PrioridadeModule),
         canActivate:[RouteGuard]
+      },
+      {
+        path:'status',
+        loadChildren: () => import('./pages/status/status.module').then(m => m.StatusModule),
+        canActivate:[RouteGuard]
       }
     ]
   }

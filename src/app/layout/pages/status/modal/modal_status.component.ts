@@ -4,18 +4,18 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { RequestService } from 'src/app/service/request/request.service';
 import { AlertService } from 'src/app/core/alert/alert.service';
-import { Prioridade } from 'src/app/model/prioridade';
+import { Status } from 'src/app/model/status';
 
 
 @Component({
-  templateUrl: './modal_prioridade.component.html'
+  templateUrl: './modal_status.component.html'
 })
-export class ModalPrioridadeComponent implements OnInit {
+export class ModalStatusComponent implements OnInit {
 
-  @Input() prioridade: Prioridade;
+  @Input() status: Status;
   @Input() modal_titulo;
   @Input() isDelete: Boolean = false;
-  prioridadeForm: FormGroup;
+  statusForm: FormGroup;
 
   constructor(
     private requestService: RequestService,
@@ -30,7 +30,7 @@ export class ModalPrioridadeComponent implements OnInit {
   }
 
   initializeForm() {
-    this.prioridadeForm = this.formBiulder.group({
+    this.statusForm = this.formBiulder.group({
       id: ['', []],
       descricao: ['', [Validators.required,
                       Validators.minLength(5),
@@ -39,30 +39,30 @@ export class ModalPrioridadeComponent implements OnInit {
     });
   }
 
-  setFormValue(prioridade: Prioridade) {
-    this.prioridadeForm.get('id').setValue(prioridade.id);
-    this.prioridadeForm.get('descricao').setValue(prioridade.descricao);
-    this.prioridadeForm.get('ativo').setValue(prioridade.ativo);
+  setFormValue(status: Status) {
+    this.statusForm.get('id').setValue(status.id);
+    this.statusForm.get('descricao').setValue(status.descricao);
+    this.statusForm.get('ativo').setValue(status.ativo);
   }
 
-  getprioridadeForm() {
-    return Prioridade.newPrioridade(
+  getStatusForm() {
+    return Status.newStatus(
         this.getFormValues()
-       );
+      );
   }
 
-  get form() { return this.prioridadeForm.controls; }
+  get form() { return this.statusForm.controls; }
 
   getFormValues() {
-    return this.prioridadeForm.value;
+    return this.statusForm.value;
   }
 
   salvar() {
 
-    this.requestService.post("/prioridade/save", this.getprioridadeForm())
+    this.requestService.post("/status/save", this.getStatusForm())
       .subscribe(response => {
         this.activeModal.close();
-        this.alertService.success('As informações do prioridade foram salvas com sucesso.');
+        this.alertService.success('As informações do status foram salvas com sucesso.');
       },responseError => {
         this.alertService.errors(responseError.error.errors);
       });
@@ -70,10 +70,10 @@ export class ModalPrioridadeComponent implements OnInit {
   }
 
   deletar(){
-    this.requestService.post("/prioridade/delete", this.getprioridadeForm())
+    this.requestService.post("/status/delete", this.getStatusForm())
       .subscribe(response => {
         this.activeModal.close();
-        this.alertService.success('O prioridade foi excluído com sucesso.');
+        this.alertService.success('O status foi excluído com sucesso.');
       },responseError => {
         this.alertService.errors(responseError.error.errors);
       });
@@ -81,11 +81,11 @@ export class ModalPrioridadeComponent implements OnInit {
 
   getId() {
 
-    if (this.prioridade.id != null) {
-      this.requestService.getParams("/prioridade/find/by", this.prioridade.id.toString())
+    if (this.status.id != null) {
+      this.requestService.getParams("/status/find/by", this.status.id.toString())
         .subscribe(response => {
-          this.prioridade = response as Prioridade;
-          this.setFormValue(this.prioridade);
+          this.status = response as Status;
+          this.setFormValue(this.status);
         },responseError => {
           this.alertService.errors(responseError.error.errors);
         });
