@@ -1,0 +1,104 @@
+<div class="modal-header modal_title header-color-modal">
+  <div class="container header_modal">
+    <div class="row">
+      <div class="col-11">
+        <strong>
+          {{modal_titulo}}
+        </strong>
+      </div>
+      <div class="col-1 div-close-header text-right">
+        <a class="close-header" (click)="activeModal.dismiss()">
+          <span>&times;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isDelete">
+  <form [formGroup]="prioridadeForm" (ngSubmit)="salvar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-2 form-group">
+            <label class="col-form-label">Código</label>
+            <input class="form-control"
+              formControlName="id"
+              type="text"
+              readonly="true"
+              autocomplete="off">
+          </div>
+          <div class="col-sm-10 form-group"
+            [ngClass]="{'has-error': form.descricao.invalid}">
+            <label class="col-form-label">Descrição</label>
+            <div class="input-group-icon right">
+              <div class="input-icon"
+                *ngIf="form.descricao.invalid">
+                <i class="fa fa-exclamation"></i>
+              </div>
+              <input class="form-control"
+                formControlName="descricao"
+                type="text"
+                placeholder="Ex: Compras"
+                autocomplete="off"/>
+                <label
+                  class="help-block error"
+                  *ngIf="form.descricao.errors?.minlength">
+                  A descrição deve possuir no minimo 5 caracteres.</label>
+                <label id="email-error"
+                  class="help-block error"
+                  *ngIf="form.descricao.errors?.maxlength">
+                  A descrição deve possuir no maximo 50 caracteres.</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 form-group">
+            <label class="col-form-label c-switch c-switch-pill c-switch-label c-switch-success">
+              <input type="checkbox" class="c-switch-input" formControlName="ativo">
+              <span class="c-switch-slider" ></span>
+            </label>
+            <label class="label-switch col-form-label">Ativo</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!prioridadeForm.valid" >
+                Salvar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="isDelete">
+  <form [formGroup]="prioridadeForm" (ngSubmit)="deletar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-12 form-group text-center fs-15">
+            <strong class="text-warning">
+              <i class="fa fa-exclamation-triangle mr-15 "></i>
+              Realmente deseja excluir o prioridade!
+            </strong>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!prioridadeForm.valid" >
+                Excluir
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

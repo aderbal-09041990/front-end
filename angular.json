@@ -41,6 +41,7 @@
               "./node_modules/fullcalendar/dist/fullcalendar.min.css",
               "./node_modules/select2/dist/css/select2.min.css",
               "./node_modules/jquery-minicolors/jquery.minicolors.css",
+              "./node_modules/@coreui/coreui/scss/coreui.scss",
               "src/styles.css",
               "src/assets/css/main.css"
             ],

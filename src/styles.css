@@ -65,7 +65,7 @@
   margin: 5px !important;
 }
 .option{
-  margin-top: -23px;
+  margin-top: 2px;
   font-size: 15px;
   color: #6c757d9c;
 }
@@ -98,4 +98,9 @@
 .help-block {
   font-size: 10px !important;
   margin-top: 0px !important;
+}
+
+.label-switch{
+  margin-left: 10px !important;
+  margin-bottom: -3px !important;
 }

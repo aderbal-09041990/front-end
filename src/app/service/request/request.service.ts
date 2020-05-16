@@ -16,11 +16,14 @@ export class RequestService{
       return new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');
   }
 
-  post(endPoint:string,json:string){
+  post(endPoint:string,json:any){
     const options = {
       headers: this.getHeaders()
     }
-    return this.httpClient.post(baseUrl + endPoint ,json,options);
+    return this.httpClient.post(
+      baseUrl + endPoint ,
+      JSON.stringify(json),
+      options);
   }
 
   get(endPoint:string){

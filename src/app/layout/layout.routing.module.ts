@@ -39,6 +39,11 @@ const routes: Routes = [
         path:'tipo/embalagem',
         loadChildren: () => import('./pages/tipo_embalagem/tipo_embalagem.module').then(m => m.TipoEmbalagemModule),
         canActivate:[RouteGuard]
+      },
+      {
+        path:'prioridade',
+        loadChildren: () => import('./pages/prioridade/prioridade.module').then(m => m.PrioridadeModule),
+        canActivate:[RouteGuard]
       }
     ]
   }
