@@ -8,7 +8,7 @@
   margin: 5px !important;
 }
 .option{
-  margin-top: -23px;
+  margin-top: 2px;
   font-size: 15px;
   color: #6c757d9c;
 }
@@ -30,4 +30,16 @@
 }
 .page-content {
   padding-top: 10px !important;
+}
+.btn-circle-usuario{
+  margin-top: -4px;
+}
+.badge-circle, .label-circle {
+  text-align: center !important;
+  margin-top: -6px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  padding: 12% !important;
+  border-radius: 100% !important;
+  font-size: 15px !important;
 }

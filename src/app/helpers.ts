@@ -84,6 +84,8 @@ export class Helpers {
 
   static montaTema(layout:Layout){
 
+    console.log(layout);
+
     this.carregarBarraNavegacaoFixa(layout.barraNavegacaoFixa);
     this.carregarLayoutFixo(layout.layoutFixo);
     this.carregarRecolherBarraLateral(layout.recolherBarraLateral);

@@ -3,25 +3,33 @@ import { Permissao } from './permissao';
 
 export class Usuario {
 
-  constructor(id:number,
-              nome:string,
-              email:string,
-              cpf:string) {
-    this.id = id;
-    this.nome = nome;
-    this.email = email;
-    this.cpf = cpf;
+  constructor(init?:Partial<Usuario>) {
+    Object.assign(this, init);
+  }
 
-    this.layout = new Layout();
-	}
+  static newUsuario(values:any) : Usuario {
+    return new Usuario(
+      {
+        id:values.id,
+        nome:values.nome,
+        email:values.email,
+        cpf: values.cpf,
+        ativo: values.ativo,
+        sexo:values.sexo,
+        tipoUsuario:values.tipoUsuario
+      }
+    );
+  }
 
-  public id: number;
-  public nome: string;
-  public email: string;
-  public senha: string;
-  public cpf: string;
-  public layout: Layout;
-  public permissoes:Permissao[];
-
+  id: number;
+  nome: string;
+  email: string;
+  senha: string;
+  cpf: string;
+  layout: Layout;
+  permissoes:Permissao[];
+  ativo: boolean;
+  sexo:string;
+  tipoUsuario:string;
 
 }

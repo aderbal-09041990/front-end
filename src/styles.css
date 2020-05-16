@@ -94,3 +94,8 @@
   width: 100%;
   top: 3%;
 }
+
+.help-block {
+  font-size: 10px !important;
+  margin-top: 0px !important;
+}

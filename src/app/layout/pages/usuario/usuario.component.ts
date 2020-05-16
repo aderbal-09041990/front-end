@@ -54,7 +54,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   cadastrar(){
-    this.open('Cadastrar Usuário',new Usuario(null,null,null,null),false);
+    this.open('Cadastrar Usuário',new Usuario(),false);
   }
 
   deletar(usuario:Usuario){
@@ -73,7 +73,7 @@ export class UsuarioComponent implements OnInit {
   openModalPermissao(usuario:Usuario) {
     const modalRef = this.modalService.open(ModalPermissaoComponent,
       {
-        scrollable: false,
+        scrollable: true,
         size: 'lg'
       });
 

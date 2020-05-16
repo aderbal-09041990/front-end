@@ -37,7 +37,7 @@ export class AlertComponent implements OnInit, OnDestroy {
         this.alerts.push(alert);
 
         if (alert.autoClose) {
-          setTimeout(() => this.removeAlert(alert), 1000000);
+          setTimeout(() => this.removeAlert(alert), 10000);
         }
       });
 
@@ -96,7 +96,7 @@ export class AlertComponent implements OnInit, OnDestroy {
 
     const alertTypeClass = {
       [AlertType.Success]: 'fa fa-check-circle icon-alert',
-      [AlertType.Error]: 'fa fa-bomb icon-alert',
+      [AlertType.Error]: 'fa fa-exclamation icon-alert',
       [AlertType.Info]: 'fa fa-info-circle icon-alert',
       [AlertType.Warning]: 'fa fa-engine-warning icon-alert'
     }

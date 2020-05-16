@@ -19,32 +19,88 @@
     <div class="modal-body">
       <div class="page-content">
         <div class="row">
-          <div class="col-sm-12 form-group">
-            <label>Nome</label>
-            <input class="form-control"
-              formControlName="nome"
-              type="text"
-              placeholder="Ex: Maria"
-              autocomplete="off">
+          <div class="col-sm-8 form-group"
+            [ngClass]="{'has-error': form.nome.invalid}">
+            <label class="col-form-label">Nome</label>
+            <div class="input-group-icon right">
+              <div class="input-icon"
+                *ngIf="form.nome.invalid">
+                <i class="fa fa-exclamation"></i>
+              </div>
+              <input class="form-control"
+                formControlName="nome"
+                type="text"
+                placeholder="Ex: Maria"
+                autocomplete="off">
+                <label id="email-error"
+                  class="help-block error"
+                  *ngIf="form.nome.errors?.minlength">
+                  O nome deve possuir mais de 10 caractere!.</label>
+                <label id="email-error"
+                  class="help-block error"
+                  *ngIf="form.nome.errors?.maxlength">
+                  O nome deve possuir mais de 200 caractere!.</label>
+            </div>
+          </div>
+          <div class="col-sm-4 form-group"
+            [ngClass]="{'has-error': form.cpf.invalid}">
+            <label class="col-form-label">cpf</label>
+            <div class="input-group-icon right">
+              <div class="input-icon"
+                *ngIf="form.cpf.invalid">
+                <i class="fa fa-exclamation"></i>
+              </div>
+              <input class="form-control"
+                formControlName="cpf"
+                type="text"
+                placeholder="000.000.000-00"
+                autocomplete="off"
+                mask="000.000.000-00" />
+              </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 form-group">
-            <label>cpf</label>
-            <input class="form-control"
-              formControlName="cpf"
-              type="text"
-              placeholder="000.000.000-00"
-              autocomplete="off"
-              mask="000.000.000-00" />
+          <div class="col-sm-8 form-group"
+            [ngClass]="{'has-error': form.email.invalid}">
+            <label class="col-form-label">Email</label>
+            <div class="input-group-icon right">
+              <div class="input-icon"
+                *ngIf="form.email.invalid">
+                <i class="fa fa-exclamation"></i>
+              </div>
+              <input class="form-control"
+                formControlName="email"
+                type="text"
+                placeholder="maria@email.com"
+                autocomplete="off"/>
+                <label id="email-error"
+                  class="help-block error"
+                  *ngIf="form.email.errors?.email">
+                  Informe um email válido.</label>
+                <label id="email-error"
+                  class="help-block error"
+                  *ngIf="form.email.errors?.minlength">
+                  O email deve possuir no minimo 10 caracteres.</label>
+                <label id="email-error"
+                  class="help-block error"
+                  *ngIf="form.email.errors?.maxlength">
+                  O email deve possuir no minimo 100 caracteres.</label>
+            </div>
           </div>
-          <div class="col-sm-8 form-group">
-            <label>Email</label>
-            <input class="form-control"
-              formControlName="email"
-              type="text"
-              placeholder="maria@email.com"
-              autocomplete="off">
+          <div class="col-sm-4 form-group">
+            <Label class="col-form-label">Sexo</Label>
+            <div class="m-b-10">
+              <label class="ui-radio ui-radio-primary">
+                <input type="radio" formControlName="sexo" [value]="'MASCULINO'">
+                <span class="input-span"></span>
+                Masculino
+              </label>
+              <label class="ui-radio ui-radio-primary ml-3">
+                <input type="radio" formControlName="sexo" [value]="'FEMININO'">
+                <span class="input-span"></span>
+                Feminino
+              </label>
+            </div>
           </div>
         </div>
       </div>

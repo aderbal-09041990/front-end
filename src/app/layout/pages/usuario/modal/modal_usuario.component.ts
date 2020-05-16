@@ -33,9 +33,16 @@ export class ModalUsuarioComponent implements OnInit {
   initializeForm() {
     this.usuarioForm = this.formBiulder.group({
       id: ['', []],
-      nome: ['', []],
-      email: ['', []],
-      cpf: ['', []]
+      nome: [' ', [Validators.required,
+                  Validators.minLength(10),
+                  Validators.maxLength(200)]],
+      email: ['', [Validators.required,
+                  Validators.email,
+                  Validators.minLength(10),
+                  Validators.maxLength(100)]],
+      cpf: ['', [Validators.required]],
+      ativo:['',[]],
+      sexo:['',[]]
     });
   }
 
@@ -44,21 +51,17 @@ export class ModalUsuarioComponent implements OnInit {
     this.usuarioForm.get('nome').setValue(usuario.nome);
     this.usuarioForm.get('email').setValue(usuario.email);
     this.usuarioForm.get('cpf').setValue(usuario.cpf);
+    this.usuarioForm.get('ativo').setValue(usuario.ativo);
+    this.usuarioForm.get('sexo').setValue(usuario.sexo);
   }
 
   getUsuarioForm() {
-    const values = this.getFormValues();
     return JSON.stringify(
-      new Usuario(
-        values.id,
-        values.nome,
-        values.email,
-        values.cpf));
+      Usuario.newUsuario(this.usuarioForm.value));
   }
 
-  getFormValues() {
-    return this.usuarioForm.value;
-  }
+  get form() { return this.usuarioForm.controls; }
+
 
   salvar() {
 

@@ -4,11 +4,13 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 import { TokenService } from '../../service/token/token.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor{
 
-  constructor(private tokenService:TokenService){}
+  constructor(private tokenService:TokenService,
+    private router:Router){}
 
   intercept(req:HttpRequest<any>,next:HttpHandler):Observable<HttpEvent<any>> {
 
@@ -29,7 +31,7 @@ export class TokenInterceptor implements HttpInterceptor{
 
         if(event instanceof HttpResponse){
 
-          if(event.status != 200){
+          if(event.status !== 200){
             this.tokenService.clear();
           }
 

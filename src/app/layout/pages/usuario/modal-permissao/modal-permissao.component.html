@@ -16,16 +16,18 @@
 </div>
 <div class="modal-body">
   <div class="page-content">
-    <div *ngFor="let item of itens">
-      <ul class="list-group list-group-bordered ">
-        <a class="list-group-item bg-theme border-radius-0">{{item.titulo}}</a>
-        <a class="list-group-item border-radius-0">
-          <label *ngFor="let permissao of item.permissoes"
-            class="ui-checkbox ui-checkbox-success ui-checkbox-inline">
-            <input type="checkbox" (click)="updatePermissao(permissao.id)" [(ngModel)]="permissao.selecionado">
-            <span class="input-span"></span>{{permissao.descricao}}
-          </label>
-        </a>
-    </ul>
+    <div>
+      <div *ngFor="let item of itens">
+        <ul class="list-group list-group-bordered ">
+          <a class="list-group-item bg-theme border-radius-0">{{item.titulo}}</a>
+          <a class="list-group-item border-radius-0">
+            <label *ngFor="let permissao of item.permissoes"
+              class="ui-checkbox ui-checkbox-success ui-checkbox-inline">
+              <input type="checkbox" (click)="updatePermissao(permissao.id)" [(ngModel)]="permissao.selecionado">
+              <span class="input-span"></span>{{permissao.descricao}}
+            </label>
+          </a>
+      </ul>
+    </div>
   </div>
 </div>

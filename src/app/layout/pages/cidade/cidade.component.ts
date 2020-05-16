@@ -36,7 +36,7 @@ export class CidadeComponent implements OnInit {
     .subscribe(response => {
       this.cidades = response as Cidade[];
     },responseError => {
-      this.alertService.errors(responseError.error.errors);
+      this.alertService.errorResponse(responseError);
     });
   }
 

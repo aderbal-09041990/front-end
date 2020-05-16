@@ -35,7 +35,7 @@ export class EstadoComponent implements OnInit {
     .subscribe(response => {
       this.estados = response as Estado[];
     },responseError => {
-      this.alertService.errors(responseError.error.errors);
+      this.alertService.errorResponse(responseError);
     });
   }
 

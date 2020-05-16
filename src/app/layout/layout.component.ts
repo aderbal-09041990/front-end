@@ -3,8 +3,8 @@ import { Helpers } from '../helpers';
 
 import { LocalStorageService } from '../service/local-storage/local-storage.service';
 import { RequestService } from '../service/request/request.service';
-import { Usuario } from '../model/usuario';
 import { AlertService } from '../core/alert/alert.service';
+import { Usuario } from '../model/usuario';
 
 @Component({
   selector: '.page-wrapper',
@@ -13,7 +13,7 @@ import { AlertService } from '../core/alert/alert.service';
 })
 export class LayoutComponent implements AfterViewInit,OnInit {
 
-  usuario:Usuario = new Usuario(null,null,null,null);
+  usuario:Usuario = new Usuario();
 
   constructor(private requestService:RequestService,
     private alertService:AlertService,

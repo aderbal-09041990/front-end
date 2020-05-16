@@ -1,10 +1,13 @@
 <div class="app-alert text-center" *ngFor="let alert of alerts" class="{{cssClass(alert)}}">
   <a (click)="removeAlert(alert)">
     <div class="row">
-      <div class="col-sm-12">
-          <i class="{{cssIconClass(alert)}}"></i>
-          <span [innerHTML]="alert.message"></span>
+      <div class="col-sm-1">
+        <i class="{{cssIconClass(alert)}}"></i>
       </div>
+      <div class="col-sm-11">
+        <span [innerHTML]="alert.message"></span>
+      </div>
+      <div class="col-sm-1"></div>
     </div>
   </a>
 </div>
