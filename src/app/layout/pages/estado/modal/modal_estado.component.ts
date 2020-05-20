@@ -46,13 +46,7 @@ export class ModalEstadoComponent implements OnInit {
   }
 
   getEstadoForm() {
-    const values = this.getFormValues();
-    return JSON.stringify(
-      new Estado(
-        values.id,
-        values.codigo,
-        values.nome,
-        values.sigla));
+    return new Estado(this.getFormValues())
   }
 
   getFormValues() {

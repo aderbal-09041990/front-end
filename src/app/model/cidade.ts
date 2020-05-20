@@ -7,13 +7,18 @@ export class Cidade{
   nome:String;
   estado:Estado;
 
-  constructor(id:number,
-              codigoIBGE:number,
-              nome:string,
-              idEstado:number) {
-    this.id = id;
-    this.codigoIBGE = codigoIBGE;
-    this.nome = nome;
-    this.estado = new Estado(idEstado,null,null,null);
+  constructor(init?:Partial<Cidade>) {
+    Object.assign(this, init);
+  }
+
+  static newCidade(values:any) : Cidade {
+    return new Cidade(
+      {
+        id:values.id,
+        codigoIBGE:values.codigoIBGEcodigoIBGE,
+        nome:values.nome,
+        estado:new Estado({id:values.idEstado})
+      }
+    );
   }
 }

@@ -48,15 +48,8 @@ export class ModalCidadeComponent implements OnInit {
     this.cidadeForm.get('idEstado').setValue(cidade.estado.id);
   }
 
-  getcidadeForm() {
-    const values = this.getFormValues();
-    return JSON.stringify(
-      new Cidade(
-        values.id,
-        values.codigoIBGE,
-        values.nome,
-        values.idEstado
-        ));
+  getCidadeForm() {
+    return new Cidade(this.getFormValues());
   }
 
   getFormValues() {
@@ -65,7 +58,7 @@ export class ModalCidadeComponent implements OnInit {
 
   salvar() {
 
-    this.requestService.post("/cidade/save", this.getcidadeForm())
+    this.requestService.post("/cidade/save", this.getCidadeForm())
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('As informações do cidade foram salvas com sucesso.');
@@ -75,7 +68,7 @@ export class ModalCidadeComponent implements OnInit {
   }
 
   deletar(){
-    this.requestService.post("/cidade/delete", this.getcidadeForm())
+    this.requestService.post("/cidade/delete", this.getCidadeForm())
       .subscribe(response => {
         this.activeModal.close();
         this.alertService.success('O cidade foi excluído com sucesso.');

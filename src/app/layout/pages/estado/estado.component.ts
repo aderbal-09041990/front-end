@@ -44,7 +44,7 @@ export class EstadoComponent implements OnInit {
   }
 
   cadastrar(){
-    this.open('Cadastrar estado',new Estado(null,null,null,null),false);
+    this.open('Cadastrar estado',new Estado(),false);
   }
 
   deletar(estado:Estado){

@@ -5,15 +5,20 @@ export class Estado{
   nome:string;
   sigla:String;
 
-  constructor(id:number,
-              codigo:number,
-              nome:string,
-              sigla:string) {
-    this.id = id;
-    this.codigo = codigo;
-    this.nome = nome;
-    this.sigla = sigla;
 
+  constructor(init?:Partial<Estado>) {
+    Object.assign(this, init);
+  }
+
+  static newEstado(values:any) : Estado {
+    return new Estado(
+      {
+        id:values.id,
+        codigo:values.codigo,
+        nome:values.nome,
+        sigla:values.sigla
+      }
+    );
   }
 
 }

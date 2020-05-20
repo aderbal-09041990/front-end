@@ -1,0 +1,282 @@
+<div class="modal-header modal_title header-color-modal">
+  <div class="container header_modal">
+    <div class="row">
+      <div class="col-11">
+        <strong>
+          {{modal_titulo}}
+        </strong>
+      </div>
+      <div class="col-1 div-close-header text-right">
+        <a class="close-header" (click)="activeModal.dismiss()">
+          <span>&times;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isDelete">
+  <form [formGroup]="empresaForm" (ngSubmit)="salvar()">
+    <div class="modal-body" style="padding-top: 0px;">
+      <div class="page-content">
+        <div class="clf">
+          <ul class="nav nav-tabs tabs-line nav-fill">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab-1" aria-expanded="true">
+                  <i class="fa fa-building"></i>
+                  Empresa
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab-2" aria-expanded="false">
+                  <i class="fa fa-street-view"></i>
+                  Endereço
+                </a>
+              </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab-1" aria-expanded="true">
+              <div class="row">
+                <div class="col-sm-7 form-group"
+                  [ngClass]="{'has-error': form.nome.invalid}">
+                  <label class="col-form-label">Nome</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.nome.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="nome"
+                      type="text"
+                      placeholder="Ex: Mini Box"
+                      autocomplete="off">
+                    <label
+                      class="help-block error"
+                      *ngIf="form.nome.errors?.maxlength">
+                      A descrição deve possuir no máximo 250 caracteres.</label>
+                  </div>
+                </div>
+                <div class="col-sm-3 form-group"[ngClass]="{'has-error': form.cnpj.invalid}">
+                  <label class="col-form-label">CNPJ</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.cnpj.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="cnpj"
+                      type="text"
+                      mask="00.000.000/0000-00"
+                      autocomplete="off">
+                  </div>
+                </div>
+                <div class="col-sm-2 form-group">
+                  <label class="col-form-label c-switch c-switch-pill c-switch-label c-switch-success"
+                    style="margin-top: 24%;">
+                    <input type="checkbox" class="c-switch-input" formControlName="ativo">
+                    <span class="c-switch-slider" ></span>
+                  </label>
+                  <label class="label-switch col-form-label">Ativo</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 form-group">
+                  <label class="col-form-label">Descrição</label>
+                  <textarea
+                    class="form-control"
+                    formControlName="descricao"
+                    rows="3">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="tab-2" aria-expanded="false">
+              <div class="row">
+                <div class="col-sm-6 form-group">
+                  <label>Estado</label>
+                  <select class="form-control input-sm"
+                    (change)="getByEstado()"
+                    formControlName="idEstado">
+                    <option value="" disabled>Selecione um empresa</option>
+                    <option *ngFor="let estado of estados" [ngValue]="estado.id">{{estado.nome}}-{{estado.sigla}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-6 form-group">
+                  <label>Cidade</label>
+                  <select class="form-control input-sm"  formControlName="idCidade">
+                    <option value="" disabled>Selecione uma cidade</option>
+                    <option *ngFor="let cidade of cidades" [ngValue]="cidade.id">{{cidade.nome}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-5 form-group"
+                  [ngClass]="{'has-error': form.email.invalid}">
+                  <label class="col-form-label">Email</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.email.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="email"
+                      type="text"
+                      placeholder="Ex: empresa@email.com"
+                      autocomplete="off">
+                  </div>
+                </div>
+                <div class="col-sm-2 form-group"[ngClass]="{'has-error': form.ddd.invalid}">
+                  <label class="col-form-label">ddd</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.ddd.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="ddd"
+                      type="text"
+                      maxlength="2"
+                      autocomplete="off">
+                  </div>
+                </div>
+                <div class="col-sm-3 form-group"
+                  [ngClass]="{'has-error': form.telefone.invalid}">
+                  <label class="col-form-label">Telefone</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.telefone.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="telefone"
+                      type="text"
+                      maxlength="11"
+                      mask="0 0000-0000"
+                      placeholder="9 9999-9999"
+                      autocomplete="off">
+                  </div>
+                </div>
+                <div class="col-sm-2 form-group"
+                  [ngClass]="{'has-error': form.cep.invalid}">
+                  <label class="col-form-label">CEP</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.cep.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="cep"
+                      type="text"
+                      maxlength="8"
+                      mask="0000-000"
+                      placeholder="9999-999"
+                      autocomplete="off">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4 form-group"
+                  [ngClass]="{'has-error': form.rua.invalid}">
+                  <label class="col-form-label">Rua</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.rua.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="rua"
+                      type="text"
+                      placeholder="Ex: Rua A"
+                      autocomplete="off">
+                  </div>
+                </div>
+                <div class="col-sm-4 form-group"[ngClass]="{'has-error': form.bairro.invalid}">
+                  <label class="col-form-label">Bairro</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.bairro.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="bairro"
+                      type="text"
+                      placeholder="Ex: Bairro A"
+                      autocomplete="off">
+                  </div>
+                </div>
+                <div class="col-sm-4 form-group"[ngClass]="{'has-error': form.logradouro.invalid}">
+                  <label class="col-form-label">Logradouro</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.logradouro.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="logradouro"
+                      type="text"
+                      placeholder="Ex: quadra"
+                      autocomplete="off">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 form-group"
+                  [ngClass]="{'has-error': form.complemento.invalid}">
+                  <label class="col-form-label">Complemento</label>
+                  <div class="input-group-icon right">
+                    <div class="input-icon"
+                      *ngIf="form.complemento.invalid">
+                      <i class="fa fa-exclamation"></i>
+                    </div>
+                    <input class="form-control"
+                      formControlName="complemento"
+                      type="text"
+                      placeholder="Ex: Em frente a ......."
+                      autocomplete="off">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!empresaForm.valid" >
+                Salvar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="isDelete">
+  <form [formGroup]="empresaForm" (ngSubmit)="deletar()">
+    <div class="modal-body">
+      <div class="page-content">
+        <div class="row">
+          <div class="col-sm-12 form-group text-center fs-15">
+            <strong class="text-warning">
+              <i class="fa fa-exclamation-triangle mr-15 "></i>
+              Realmente deseja excluir o empresa!
+            </strong>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger"
+                (click)="activeModal.close('Close click')">
+                Cancelar
+        </button>
+        <button class="btn btn-success"
+                type="submit"
+                [disabled]="!empresaForm.valid" >
+                Excluir
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

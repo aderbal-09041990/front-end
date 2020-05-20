@@ -30,7 +30,7 @@ export class SidebarComponent{
   }
 
 
-  hasPermission(permisao:String){
+  /*hasPermission(permisao:String){
 
     for(var p of this.usuario.permissoes){
         if(p.nome === permisao){
@@ -61,6 +61,6 @@ export class SidebarComponent{
 
     return hasPermission;
 
-  }
+  }*/
 
 }

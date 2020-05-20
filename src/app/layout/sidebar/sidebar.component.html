@@ -8,25 +8,22 @@
     </div>
   </div>
   <ul class="side-menu metismenu">
-    <li *ngIf="hasPermissionMenu('ROLE_ESTAQUE')">
+    <li>
       <a data-toggle="collapse" href="#colapsed1" role="button" aria-expanded="false"
         aria-controls="colapsed1" (click)="animationArrow('1')">
-        <i class="sidebar-item-icon fa fa-cubes"></i>
-        <span class="nav-label">Estoque</span>
+        <i class="sidebar-item-icon fa fa-building"></i>
+        <span class="nav-label">Empresa</span>
         <i class="icon1 fa fa-angle-left arrow"></i>
       </a>
       <div class="nav-2-level collapse" id="colapsed1">
         <ul>
-          <li *ngIf="hasPermission('ROLE_PRODUTO_CONSULTAR')">
-            <a routerLink="/app/produto">Produto</a>
-          </li>
-          <li *ngIf="hasPermission('ROLE_TIPO_EMBALAGEM_CONSULTAR')">
-            <a routerLink="/app/tipo/embalagem">Tipo de embalagem</a>
+          <li>
+            <a routerLink="/app/empresa">Empresa</a>
           </li>
         </ul>
       </div>
     </li>
-    <li *ngIf="hasPermissionMenu('ROLE_ENTIDADES')">
+    <li>
       <a data-toggle="collapse" href="#colapsed2" role="button" aria-expanded="false"
         aria-controls="colapsed2" (click)="animationArrow('2')">
 
@@ -36,10 +33,10 @@
       </a>
       <div class="nav-2-level collapse" id="colapsed2">
         <ul>
-          <li *ngIf="hasPermission('ROLE_USUARIO_CONSULTAR')">
+          <li>
             <a routerLink="/app/usuario">Usuário</a>
           </li>
-          <li *ngIf="hasPermission('ROLE_FORNECEDOR_CONSULTAR')">
+          <li>
             <a routerLink="/app/fornecedor">Fornecedores</a>
           </li>
         </ul>

@@ -49,6 +49,11 @@ const routes: Routes = [
         path:'status',
         loadChildren: () => import('./pages/status/status.module').then(m => m.StatusModule),
         canActivate:[RouteGuard]
+      },
+      {
+        path:'empresa',
+        loadChildren: () => import('./pages/empresa/empresa.module').then(m => m.EmpresaModule),
+        canActivate:[RouteGuard]
       }
     ]
   }

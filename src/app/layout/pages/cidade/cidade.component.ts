@@ -45,7 +45,7 @@ export class CidadeComponent implements OnInit {
   }
 
   cadastrar(){
-    this.open('Cadastrar cidade',new Cidade(null,null,null,null),false);
+    this.open('Cadastrar cidade',new Cidade(),false);
   }
 
   deletar(cidade:Cidade){

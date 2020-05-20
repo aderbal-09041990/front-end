@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     this.tokenService.clear();
 
-    this.requestService.post("/auth/login",this.getJson())
+    this.requestService.post("/auth/login",this.getLogin())
     .subscribe(
       response => {
 
@@ -66,9 +66,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  getJson(){
+  getLogin(){
     const values = this.loginForm.value;
-    return JSON.stringify(new Login(values.email,values.senha));
+    return new Login({email:values.email,senha:values.senha});
   }
 
 }
